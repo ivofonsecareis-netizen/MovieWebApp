@@ -1,46 +1,26 @@
-import { useEffect, useState } from 'react';
-import { getTrendingMovies, getPopularMovies } from '../services/tmdb.tsx';
-import type { Imovie } from '../types/types.ts';
-import options from '../services/tmdb.tsx';
+import ContentList from '../components/content/contentlist';
 
 function HomePage() {
-  const [trending, setTrending] = useState([]);
-  const [popular, setPopular] = useState<Imovie[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await fetch(
-        'https://api.themoviedb.org/3/movie/popular',
-        options,
-      );
-      const data = await response.json();
-      console.log("data", data);
-      setPopular(data.results);
-    };
-    fetchMovies();
-  }, []);
-  
-
   return (
     <div>
       <h1>Home</h1>
+
       <section>
-        <h2>Trending</h2>
-        {trending.map(movie => (
-          <div key={movie.id}>{movie.title}</div>
-        ))}
+        <h2>Trending Movies</h2>
+        <ContentList type="movie" category="popular" />
       </section>
 
       <section>
-        <h2>Popular</h2>
-        {popular.map(movie => (
-          <div key={movie.id}>{movie.title}</div>
-        ))}
+        <h2>Top Rated Movies</h2>
+        <ContentList type="movie" category="top_rated" />
+      </section>
+
+      <section>
+        <h2>Popular TV Series</h2>
+        <ContentList type="tv" category="popular" />
       </section>
     </div>
   );
 }
 
 export default HomePage;
-
