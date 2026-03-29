@@ -1,10 +1,10 @@
 import type { Movie, TVSeries } from '../../types/types';
 
-interface IContentCardProps {
+interface ContentCardProps {
   content: Movie | TVSeries;
 }
 
-function ContentCard({ content }: IContentCardProps) {
+function ContentCard({ content }: ContentCardProps) {
   const title = 'title' in content ? content.title : content.name;
 
   const imageUrl = content.poster_path
@@ -12,11 +12,18 @@ function ContentCard({ content }: IContentCardProps) {
     : '';
 
   return (
-    <div>
-      {imageUrl && <img src={imageUrl} alt={title} width="150" />}
-      <h3>{title}</h3>
-      <p>⭐ {content.vote_average}</p>
-    </div>
+    <article className="movie-card">
+      {imageUrl ? (
+        <img className="movie-card__image" src={imageUrl} alt={title} />
+      ) : (
+        <div className="movie-card__placeholder">No image</div>
+      )}
+
+      <div className="movie-card__info">
+        <h3 className="movie-card__title">{title}</h3>
+        <p className="movie-card__rating">★ {content.vote_average.toFixed(1)}</p>
+      </div>
+    </article>
   );
 }
 

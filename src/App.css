@@ -1,0 +1,39 @@
+.navbar__link {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .hero-banner {
+    margin: 0 14px 24px;
+    min-height: 220px;
+  }
+
+  .hero-banner__overlay {
+    padding: 20px;
+  }
+
+  .hero-banner__title {
+    font-size: 1.7rem;
+  }
+
+  .content-section__title {
+    margin: 0 14px 12px;
+    font-size: 1.25rem;
+  }
+
+  .content-row {
+    padding: 0 14px 8px;
+  }
+
+  .content-row__link {
+    flex: 0 0 150px;
+  }
+
+  .movie-card {
+    min-height: 300px;
+  }
+
+  .movie-card__image,
+  .movie-card__placeholder {
+    height: 210px;
+  }

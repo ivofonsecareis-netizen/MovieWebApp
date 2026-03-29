@@ -4,36 +4,42 @@ import ContentCard from '../cards/card';
 import { fetchContent } from '../../services/tmdb';
 import type { IResult } from '../../types/types';
 
-interface IContentProps {
+interface ContentListProps {
   type: 'movie' | 'tv';
   category: string;
 }
 
-function ContentList({ type, category }: IContentProps) {
-  const [content, setContent] = useState<IResult>();
+function ContentList({ type, category }: ContentListProps) {
+  const [content, setContent] = useState<IResult | null>(null);
 
   useEffect(() => {
-    const fetchContentByTypeAndCategory = async () => {
-      const newContent = await fetchContent(type, category);
-      setContent(newContent);
+    const getContent = async () => {
+      const data = await fetchContent(type, category);
+      setContent(data);
     };
 
-    fetchContentByTypeAndCategory();
+    getContent();
   }, [type, category]);
 
+  if (!content) {
+    return <p className="loading-text">Loading...</p>;
+  }
+
+  if (!content.results || content.results.length === 0) {
+    return <p className="loading-text">No content found.</p>;
+  }
+
   return (
-    <div>
-      {content?.results.length === 0 ? (
-        <p>No content found.</p>
-      ) : (
-        content?.results.map((item) => (
-          <div key={item.id}>
-            <Link to={`/${type}/${item.id}`}>
-              <ContentCard content={item} />
-            </Link>
-          </div>
-        ))
-      )}
+    <div className="content-row">
+      {content.results.map((item) => (
+        <Link
+          key={item.id}
+          to={`/details/${item.id}`}
+          className="content-row__link"
+        >
+          <ContentCard content={item} />
+        </Link>
+      ))}
     </div>
   );
 }
