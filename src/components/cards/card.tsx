@@ -13,11 +13,13 @@ function ContentCard({ content }: ContentCardProps) {
 
   return (
     <article className="movie-card">
-      {imageUrl ? (
-        <img className="movie-card__image" src={imageUrl} alt={title} />
-      ) : (
-        <div className="movie-card__placeholder">No image</div>
-      )}
+      <div className="movie-card__image-wrapper">
+        {imageUrl ? (
+          <img className="movie-card__image" src={imageUrl} alt={title} />
+        ) : (
+          <div className="movie-card__placeholder">No image</div>
+        )}
+      </div>
 
       <div className="movie-card__info">
         <h3 className="movie-card__title">{title}</h3>

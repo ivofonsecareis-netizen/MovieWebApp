@@ -1,15 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar__left">
-        <Link to="/" className="navbar__logo">
-          IMTV
-        </Link>
-      </div>
-
-      <div className="navbar__center">
+      <div className="navbar__links">
         <NavLink
           to="/"
           className={({ isActive }) =>
