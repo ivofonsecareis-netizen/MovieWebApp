@@ -21,3 +21,14 @@ export interface IDetails {
   vote_average: number;
   vote_count: number;
 }
+
+export interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+}
+
+export interface MovieCredits {
+  cast: CastMember[];
+}
