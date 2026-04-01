@@ -11,9 +11,9 @@ body,
   overflow-x: hidden;
   font-family: Inter, Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(48, 104, 182, 0.45), transparent 30%),
-    radial-gradient(circle at top right, rgba(183, 39, 74, 0.45), transparent 35%),
-    linear-gradient(135deg, #263f6b 0%, #5a3e73 45%, #a22b45 100%);
+    radial-gradient(circle at top left, rgba(148, 163, 184, 0.45), transparent 30%),
+    radial-gradient(circle at top right, rgba(57, 46, 49, 0.45), transparent 35%),
+    linear-gradient(135deg, #242526 0%, #19111f 45%, #20090e 100%);
   color: #ffffff;
 }
 
