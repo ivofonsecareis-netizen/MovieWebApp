@@ -4,6 +4,11 @@ function MoviesPage() {
   return (
     <>
       <div>
+        <h1>Now Playing</h1>
+        <ContentList category="now_playing" type="movie" />
+      </div>
+      
+      <div>
         <h1>Upcoming Movies</h1>
         <ContentList category="upcoming" type="movie" />
       </div>

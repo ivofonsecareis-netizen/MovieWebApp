@@ -4,6 +4,11 @@ function TVPages() {
   return (
     <>
       <div>
+        <h1>On The Air</h1>
+        <ContentList category="on_the_air" type="tv" />
+      </div>
+      
+      <div>
         <h1>Popular TV Series</h1>
         <ContentList category="popular" type="tv" />
       </div>
