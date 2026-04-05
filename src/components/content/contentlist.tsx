@@ -1,25 +1,36 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ContentCard from '../cards/card';
-import { fetchContent } from '../../services/tmdb';
+import { fetchContent, fetchSearchResults } from '../../services/tmdb';
 import type { IResult } from '../../types/types';
 
 interface ContentListProps {
   type: 'movie' | 'tv';
-  category: string;
+  category?: string;
+  query?: string;
 }
 
-function ContentList({ type, category }: ContentListProps) {
+function ContentList({ type, category, query = '' }: ContentListProps) {
   const [content, setContent] = useState<IResult | null>(null);
 
   useEffect(() => {
     const getContent = async () => {
+      const trimmedQuery = query.trim();
+
+      if (trimmedQuery) {
+        const data = await fetchSearchResults(type, trimmedQuery);
+        setContent(data);
+        return;
+      }
+
+      if (!category) return;
+
       const data = await fetchContent(type, category);
       setContent(data);
     };
 
     getContent();
-  }, [type, category]);
+  }, [type, category, query]);
 
   if (!content) {
     return <p className="loading-text">Loading...</p>;
@@ -34,7 +45,7 @@ function ContentList({ type, category }: ContentListProps) {
       {content.results.map((item) => (
         <Link
           key={item.id}
-          to={`/details/${item.id}`}
+          to={`/details/${type}/${item.id}`}
           className="content-row__link"
         >
           <ContentCard content={item} />

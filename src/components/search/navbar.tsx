@@ -5,15 +5,6 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar__links">
         <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? 'navbar__link navbar__link--active' : 'navbar__link'
-          }
-        >
-          Home
-        </NavLink>
-
-        <NavLink
           to="/movies"
           className={({ isActive }) =>
             isActive ? 'navbar__link navbar__link--active' : 'navbar__link'

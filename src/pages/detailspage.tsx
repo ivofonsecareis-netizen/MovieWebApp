@@ -1,37 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetails, fetchMovieCredits } from '../services/tmdb';
+import { fetchContentDetails, fetchContentCredits } from '../services/tmdb';
 import type { IDetails, CastMember } from '../types/typedetails';
 
 function DetailsPage() {
-  const { id } = useParams();
-  const [movie, setMovie] = useState<IDetails | null>(null);
+  const { id, type } = useParams();
+  const [content, setContent] = useState<IDetails | null>(null);
   const [cast, setCast] = useState<CastMember[]>([]);
 
   useEffect(() => {
-    const getMovieData = async () => {
-      if (!id) return;
+    const getContentData = async () => {
+      if (!id || (type !== 'movie' && type !== 'tv')) return;
 
-      const detailsData = await fetchMovieDetails(id);
-      const creditsData = await fetchMovieCredits(id);
+      const detailsData = await fetchContentDetails(type, id);
+      const creditsData = await fetchContentCredits(type, id);
 
-      setMovie(detailsData);
+      setContent(detailsData);
       setCast(creditsData.cast.slice(0, 6));
     };
 
-    getMovieData();
-  }, [id]);
+    getContentData();
+  }, [id, type]);
 
-  if (!movie) {
+  if (!content) {
     return <p className="loading-text">Loading...</p>;
   }
 
-  const posterUrl = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  const posterUrl = content.poster_path
+    ? `https://image.tmdb.org/t/p/w500${content.poster_path}`
     : '';
 
-  const backdropUrl = movie.backdrop_path
-    ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+  const backdropUrl = content.backdrop_path
+    ? `https://image.tmdb.org/t/p/original${content.backdrop_path}`
     : '';
 
   return (
@@ -47,26 +47,28 @@ function DetailsPage() {
             <img
               className="details-page__poster"
               src={posterUrl}
-              alt={movie.title || movie.name || 'Poster'}
+              alt={content.title || content.name || 'Poster'}
             />
           )}
 
           <div className="details-page__info">
-            <h1 className="details-page__title">{movie.title || movie.name}</h1>
+            <h1 className="details-page__title">{content.title || content.name}</h1>
 
             <p className="details-page__meta">
-              ★ {movie.vote_average.toFixed(1)} · {movie.release_date || movie.first_air_date} · {movie.runtime ?? 'N/A'} min
+              ★ {content.vote_average.toFixed(1)} ·{' '}
+              {content.release_date || content.first_air_date} ·{' '}
+              {content.runtime ?? 'N/A'} min
             </p>
 
             <div className="details-page__genres">
-              {movie.genres.map((genre) => (
+              {content.genres.map((genre) => (
                 <span key={genre.id} className="details-page__genre">
                   {genre.name}
                 </span>
               ))}
             </div>
 
-            <p className="details-page__overview">{movie.overview}</p>
+            <p className="details-page__overview">{content.overview}</p>
 
             <h2 className="details-page__actors-title">Actors</h2>
 

@@ -81,90 +81,33 @@ img {
   padding: 22px 0 40px;
 }
 
-/* HERO */
-.hero-banner {
-  margin: 0 24px 30px;
-  min-height: 270px;
-  border-radius: 26px;
-  overflow: hidden;
-  background:
-    linear-gradient(to right, rgba(8, 11, 20, 0.88), rgba(8, 11, 20, 0.22)),
-    url('https://image.tmdb.org/t/p/original/xRyINp9KfMLVjRiO5nCsoRDdvvF.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: flex-end;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
-}
-
-.hero-banner--home {
-  min-height: 320px;
-}
-
-.hero-banner__overlay {
-  padding: 34px;
-  max-width: 540px;
+.media-page {
   width: 100%;
 }
 
-.hero-banner__subtitle {
-  margin: 0 0 10px;
-  color: #d6dbef;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.hero-banner__title {
-  margin: 0 0 14px;
-  font-size: 2.4rem;
-  line-height: 1.1;
-}
-
-.hero-banner__text {
-  margin: 0;
-  color: #eef1fb;
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* HOME SEARCH */
-.home-page {
-  width: 100%;
-}
-
-.home-search {
-  margin-top: 22px;
+/* SEARCH BAR UNDER NAVBAR */
+.page-search {
   display: flex;
-  gap: 12px;
+  justify-content: center;
+  margin: 6px 24px 28px;
+}
+
+.page-search__input {
+  width: 100%;
   max-width: 520px;
-  width: 100%;
-}
-
-.home-search__input {
-  flex: 1;
-  min-width: 0;
-  height: 48px;
+  height: 50px;
   border: none;
   border-radius: 14px;
-  padding: 0 16px;
+  padding: 0 18px;
   font-size: 1rem;
   outline: none;
   background: rgba(255, 255, 255, 0.95);
   color: #111827;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
-.home-search__input::placeholder {
+.page-search__input::placeholder {
   color: #6b7280;
-}
-
-.home-search__button {
-  height: 48px;
-  padding: 0 18px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #1da1ff, #7b61ff);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
 }
 
 /* SECTION */
@@ -405,10 +348,6 @@ img {
     flex: 0 0 160px;
   }
 
-  .hero-banner__title {
-    font-size: 2rem;
-  }
-
   .details-page__actors {
     grid-template-columns: repeat(3, minmax(100px, 1fr));
   }
@@ -428,21 +367,8 @@ img {
     font-size: 0.92rem;
   }
 
-  .hero-banner {
-    margin: 0 14px 24px;
-    min-height: 220px;
-  }
-
-  .hero-banner--home {
-    min-height: 260px;
-  }
-
-  .hero-banner__overlay {
-    padding: 22px;
-  }
-
-  .hero-banner__title {
-    font-size: 1.8rem;
+  .page-search {
+    margin: 4px 14px 24px;
   }
 
   .content-section__title {
@@ -489,23 +415,11 @@ img {
   .details-page__actors {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
   }
-
-  .home-search {
-    flex-direction: column;
-  }
-
-  .home-search__button {
-    width: 100%;
-  }
 }
 
 @media (max-width: 480px) {
   .content-row__link {
     flex: 0 0 130px;
-  }
-
-  .hero-banner__title {
-    font-size: 1.5rem;
   }
 
   .details-page__actors {
