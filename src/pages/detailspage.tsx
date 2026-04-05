@@ -54,11 +54,11 @@ function DetailsPage() {
           <div className="details-page__info">
             <h1 className="details-page__title">{content.title || content.name}</h1>
 
-            <p className="details-page__meta">
-              ★ {content.vote_average.toFixed(1)} ·{' '}
-              {content.release_date || content.first_air_date} ·{' '}
-              {content.runtime ?? 'N/A'} min
-            </p>
+           <p className="details-page__meta">
+     ★ {content.vote_average.toFixed(1)} · {' '}
+      {(content.release_date || content.first_air_date)?.slice(0, 4)} · {' '}
+      {content.runtime ?? 'N/A'} min
+      </p>
 
             <div className="details-page__genres">
               {content.genres.map((genre) => (
