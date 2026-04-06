@@ -37,6 +37,8 @@ img {
   overflow-x: hidden;
 }
 
+
+
 /* ///// NAVBAR ///// */
 .navbar {
   position: sticky;
@@ -69,6 +71,8 @@ img {
   box-shadow: 0 8px 18px rgba(60, 120, 255, 0.35);
 }
 
+
+
 /* ///// PAGES ///// */
 .page-content {
   width: 100%;
@@ -79,6 +83,8 @@ img {
 .media-page {
   width: 100%;
 }
+
+
 
 /* ///// SEARCH BAR ///// */
 .page-search {
@@ -104,6 +110,8 @@ img {
 .page-search__input::placeholder {
   color: #6b7280;
 }
+
+
 
 /* ///// SECTIONS ///// */
 .content-section {
@@ -142,6 +150,8 @@ img {
   flex: 0 0 180px;
   min-width: 0;
 }
+
+
 
 /* ///// CARD ///// */
 .movie-card {
@@ -218,6 +228,8 @@ img {
   margin: 0 24px;
   color: #edf0f9;
 }
+
+
 
 /* ///// DETAILS ///// */
 .details-page {
