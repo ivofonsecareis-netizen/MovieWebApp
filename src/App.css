@@ -363,7 +363,7 @@ img {
 
 
 
-/* ///// TABLET DETAILS FIX ///// */
+/* ///// TABLET ///// */
 @media (max-width: 1004px) and (min-width: 769px) {
   .details-page__banner {
     min-height: 420px;
